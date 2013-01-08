@@ -17,15 +17,14 @@ CYAN="\033[1;36m"
 def fdebug(message) :
 	global debug
 	if "d" in debug :
-		print (JAUNE + "DEBUG : " + message)
+		print (JAUNE + "DEBUG : " + message + NORMAL)
 #MAIN
 
-debug = raw_input (VERT + "Tape 0 pour lancer le programme")
+debug = raw_input (VERT + "Tape 0 pour lancer le programme" + NORMAL)
 fdebug("init terminée")
-nom = raw_input (VERT + "Bonjour ! Entre ton nom !")
-fdebug("""Nom enregistré dans la variable "Nom" """)
-
-print(VERT + "Bonjour " + nom)
+nom = raw_input (VERT + "Bonjour ! Entre ton nom !" + NORMAL)
+fdebug("""Nom enregistré dans la variable "Nom" """ + NORMAL)
+print(VERT + "Bonjour " + nom + NORMAL)
 
 #TODO
 #PROGRAMME
