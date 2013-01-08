@@ -12,4 +12,13 @@ BLANCLAIR="\033[1;08m"
 JAUNE="\033[1;33m"
 CYAN="\033[1;36m"
 
+#FONCTIONS
+
+#MAIN
+
 nom = input(VERT + "Bonjour ! Entre ton nom !")
+print(VERT + "Bonjour " + nom)
+
+#TODO
+#PROGRAMME
+#DEBUG
