@@ -14,8 +14,12 @@ CYAN="\033[1;36m"
 
 #FONCTIONS
 
+def debug(message):
+	if "d" in hidden :
+		print(JAUNE + message)
 #MAIN
 
+hidden = input(VERT + "Tape 0 pour lancer le programme")
 nom = input(VERT + "Bonjour ! Entre ton nom !")
 print(VERT + "Bonjour " + nom)
 
