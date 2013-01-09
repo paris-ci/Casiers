@@ -36,7 +36,7 @@ def generateur(presence) : # a si le ficher et present, w sinon
 	if type is "a" :
 		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " *** " + raw_input (VERT + "Entre l'action que tu as effectué(e) >>>" + NORMAL) + "(" + nom + ")"+ "\n")
 	else : 
-		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " >>> " + raw_input (VERT + "Entre l'action que tu as effectué(e) >>>" + NORMAL) + "(" + nom + ")"+ "\n")
+		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " >>> " + raw_input (VERT + "Entre le commentaire que tu as effectué(e) >>>" + NORMAL) + "(" + nom + ")"+ "\n")
 	fdebug("Enregistrement dans le fichier")
 	pasdefichier.close() # Je ferme la porte derriere mon fichier
 #MAIN
@@ -48,18 +48,21 @@ fdebug("Initialisation")
 fdebug("Demande du pseudo ")
 nom = raw_input (VERT + "Bonjour ! Entre ton pseudo ! >>>" + NORMAL)
 fdebug("""Enregistrement du pseudo dans la variable "Nom" """)
-
+print(VERT + "Bonjour " + nom + NORMAL)
 fdebug("Boucle initialisée")
+
+
 while "1" == "1" :
-	print(VERT + "Bonjour " + nom + NORMAL)
 	fdebug("Demande du nom de la personne cible")
 	cible = raw_input ( VERT + "Quel est le nom de la personne cible ? >>>" + NORMAL )
 	fdebug ("""Enregistrement la cible dans la variable "cible". """)
 	
 	fdebug("demande du type d'ajout")
-	type = raw_input("Veut tu faire une a(ction) ou un c(ommentaire) ? >>>")
+	type = raw_input(VERT + "Veut tu faire une a(ction) ou un c(ommentaire) ? >>>" + NORMAL)
 	if type is not "a" :
+		fdebug("Ce n'est pas une action")
 		if type is not "c" :
+			fdebug("Ce n'est pas un commantaire")
 			ferror("Pas de valeur correcte")
 			print(ROUGE + "Tu n'as pas entrée une valeur correcte . Je pense donc que tu veux inscrire un commentaire" + NORMAL)
 			fdebug("Mise de type a c")
