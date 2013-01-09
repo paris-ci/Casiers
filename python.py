@@ -17,14 +17,24 @@ CYAN="\033[1;36m"
 def fdebug(message) :
 	global debug
 	if "d" in debug :
-		print (JAUNE + "DEBUG : " + message + NORMAL)
+		print (JAUNE + "DEBUG : " + message + NORMAL )
 #MAIN
 
-debug = raw_input (VERT + "Tape 0 pour lancer le programme" + NORMAL)
-fdebug("init terminée")
-nom = raw_input (VERT + "Bonjour ! Entre ton nom !" + NORMAL)
-fdebug("""Nom enregistré dans la variable "Nom" """ + NORMAL)
+debug = raw_input (VERT + "Tape 0 pour lancer le programme >>>" + NORMAL)
+fdebug("Initialisation")
+
+fdebug("Demande du nom ")
+nom = raw_input (VERT + "Bonjour ! Entre ton nom ! >>>" + NORMAL)
+fdebug("""enregistrement du nom dans la variable "Nom" """)
+
+
 print(VERT + "Bonjour " + nom + NORMAL)
+fdebug("Demande du nom de la personne cible")
+cible = raw_input ( VERT + "Quel est le nom de la personne cible ? >>>" + NORMAL )
+fdebug ("""Enregistrement la cible dans la variable "cible". """)
+fdebug (" Demande de la remarque ")
+raison = raw_input (VERT + "Entre la remarque" + NORMAL)
+fdebug ("""Enregistrement de la remarque dans la variable "raison". """)
 
 #TODO
 #PROGRAMME
