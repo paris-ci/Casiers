@@ -40,13 +40,14 @@ def generateur(presence) : # a si le ficher et present, w sinon
 
 debug = raw_input (VERT + "Tape 0 pour lancer le programme >>>" + NORMAL)
 fdebug("Initialisation")
+
+
+fdebug("Demande du pseudo ")
+nom = raw_input (VERT + "Bonjour ! Entre ton pseudo ! >>>" + NORMAL)
+fdebug("""Enregistrement du pseudo dans la variable "Nom" """)
+
 fdebug("Boucle initialisée")
 while "1" == "1" :
-	fdebug("Demande du nom ")
-	nom = raw_input (VERT + "Bonjour ! Entre ton nom ! >>>" + NORMAL)
-	fdebug("""Enregistrement du nom dans la variable "Nom" """)
-
-
 	print(VERT + "Bonjour " + nom + NORMAL)
 	fdebug("Demande du nom de la personne cible")
 	cible = raw_input ( VERT + "Quel est le nom de la personne cible ? >>>" + NORMAL )
