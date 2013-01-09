@@ -30,10 +30,13 @@ def ferror(message) :
 def generateur(presence) : # a si le ficher et present, w sinon
 	global cible
 	global nom
+	global type
 	pasdefichier = open(cible + ".txt", presence) # Ouvre le fichier
 	fdebug("Ouvert / cree le fichier")
-	
-	pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " >>> " + raw_input (VERT + "Entre la remarque >>>" + NORMAL) + "(" + nom + ")"+ "\n")
+	if type is "a" :
+		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " *** " + raw_input (VERT + "Entre l'action que tu as effectué(e) >>>" + NORMAL) + "(" + nom + ")"+ "\n")
+	else : 
+		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " >>> " + raw_input (VERT + "Entre l'action que tu as effectué(e) >>>" + NORMAL) + "(" + nom + ")"+ "\n")
 	fdebug("Enregistrement dans le fichier")
 	pasdefichier.close() # Je ferme la porte derriere mon fichier
 #MAIN
@@ -52,6 +55,15 @@ while "1" == "1" :
 	fdebug("Demande du nom de la personne cible")
 	cible = raw_input ( VERT + "Quel est le nom de la personne cible ? >>>" + NORMAL )
 	fdebug ("""Enregistrement la cible dans la variable "cible". """)
+	
+	fdebug("demande du type d'ajout")
+	type = raw_input("Veut tu faire une a(ction) ou un c(ommentaire) ? >>>")
+	if type is not "a" :
+		if type is not "c" :
+			ferror("Pas de valeur correcte")
+			print(ROUGE + "Tu n'as pas entrée une valeur correcte . Je pense donc que tu veux inscrire un commentaire" + NORMAL)
+			fdebug("Mise de type a c")
+			type = "c"
 	
 	fdebug("Test de presence en cours")
 	
