@@ -82,6 +82,6 @@ while "1" == "1" :
 		print(VERT + "Remarque ajoutée !" + NORMAL)
 		print ("\n\n\n")
 	
-ferror("EOF !")
+ferror("EOF !!")
 #TODO
 #PROGRAMME
