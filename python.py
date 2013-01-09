@@ -12,6 +12,9 @@ BLANCLAIR="\033[1;08m"
 JAUNE="\033[1;33m"
 CYAN="\033[1;36m"
 
+#MODULES
+import time  
+
 #FONCTIONS
 
 def fdebug(message) :
@@ -26,10 +29,11 @@ def ferror(message) :
 		
 def generateur(presence) : # a si le ficher et present, w sinon
 	global cible
+	global nom
 	pasdefichier = open(cible + ".txt", presence) # Ouvre le fichier
 	fdebug("Ouvert / cree le fichier")
 	
-	pasdefichier.write(raw_input (VERT + "Entre la remarque >>>" + NORMAL) + "\n")
+	pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " >>> " + raw_input (VERT + "Entre la remarque >>>" + NORMAL) + "(" + nom + ")"+ "\n")
 	fdebug("Enregistrement dans le fichier")
 	pasdefichier.close() # Je ferme la porte derriere mon fichier
 #MAIN
