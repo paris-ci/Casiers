@@ -65,7 +65,7 @@ while "1" == "1" :
 	finally :
 		fdebug("Generation finie")
 		print(VERT + "Remarque ajoutée !" + NORMAL)
-		print ("/n/n/n")
+		print ("\n\n\n")
 	
 ferror("EOF !")
 #TODO
