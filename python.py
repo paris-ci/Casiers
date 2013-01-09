@@ -18,23 +18,49 @@ def fdebug(message) :
 	global debug
 	if "d" in debug :
 		print (JAUNE + "DEBUG : " + message + NORMAL )
+		
+def ferror(message) :
+	global debug
+	if "d" in debug :
+		print (ROUGE + "ERREUR : " + message + NORMAL)
+		
+def generateur(presence) : # a si le ficher et present, w sinon
+	global cible
+	pasdefichier = open(cible + ".txt", presence) # Ouvre le fichier
+	fdebug("Ouvert / cree le fichier")
+	
+	pasdefichier.write(raw_input (VERT + "Entre la remarque >>>" + NORMAL) + "\n")
+	fdebug("Enregistrement dans le fichier")
+	pasdefichier.close() # Je ferme la porte derriere mon fichier
 #MAIN
 
 debug = raw_input (VERT + "Tape 0 pour lancer le programme >>>" + NORMAL)
 fdebug("Initialisation")
+fdebug("Boucle initialisée")
+while "1" == "1" :
+	fdebug("Demande du nom ")
+	nom = raw_input (VERT + "Bonjour ! Entre ton nom ! >>>" + NORMAL)
+	fdebug("""Enregistrement du nom dans la variable "Nom" """)
 
-fdebug("Demande du nom ")
-nom = raw_input (VERT + "Bonjour ! Entre ton nom ! >>>" + NORMAL)
-fdebug("""enregistrement du nom dans la variable "Nom" """)
 
-
-print(VERT + "Bonjour " + nom + NORMAL)
-fdebug("Demande du nom de la personne cible")
-cible = raw_input ( VERT + "Quel est le nom de la personne cible ? >>>" + NORMAL )
-fdebug ("""Enregistrement la cible dans la variable "cible". """)
-fdebug (" Demande de la remarque ")
-raison = raw_input (VERT + "Entre la remarque" + NORMAL)
-fdebug ("""Enregistrement de la remarque dans la variable "raison". """)
-
+	print(VERT + "Bonjour " + nom + NORMAL)
+	fdebug("Demande du nom de la personne cible")
+	cible = raw_input ( VERT + "Quel est le nom de la personne cible ? >>>" + NORMAL )
+	fdebug ("""Enregistrement la cible dans la variable "cible". """)
+	
+	fdebug("Test de presence en cours")
+	
+	try:
+		fichier = open( cible + ".txt", "r") # TEST Ouvre le fichier
+	except IOError:
+		ferror("Le fichier n'existe pas")
+		generateur("w")
+	else :
+		generateur("a")
+	finally :
+		fdebug("Generation finie")
+		print(VERT + "Remarque ajoutée !" + NORMAL)
+	
+ferror("EOF !")
 #TODO
 #PROGRAMME
