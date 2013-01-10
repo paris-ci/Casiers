@@ -34,16 +34,16 @@ def generateur(presence) : # a si le ficher et present, w sinon
 	pasdefichier = open(cible + ".txt", presence) # Ouvre le fichier
 	fdebug("Ouvert / cree le fichier")
 	if type is "a" :
-		action = raw_input ( VERT + "Entre l'action a inscrire dans le registre" + NORMAL )
+		action = raw_input ( VERT + "Entre l'action a inscrire dans le registre >>>" + NORMAL )
 		while action == "" :
 			print (ROUGE + "Entre quelque chose" + NORMAL )
-			action = raw_input ( VERT + "Entre l'action a inscrire dans le registre" + NORMAL )
+			action = raw_input ( VERT + "Entre l'action a inscrire dans le registre >>>" + NORMAL )
 		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " *** " + action + "(" + nom + ")"+ "\n")
 	else : 
-		commantaire = raw_input( VERT + "Entre le commantaire a inscrire dans le casier >>>" + NORMAL )
+		commantaire = raw_input( VERT + "Entre le commentaire a inscrire dans le casier >>>" + NORMAL )
 		while commantaire == "" :
 			print (ROUGE + "Entre quelque chose" + NORMAL )
-			commantaire = raw_input( VERT + "Entre le commantaire a inscrire dans le casier >>>" + NORMAL )
+			commantaire = raw_input( VERT + "Entre le commentaire a inscrire dans le casier >>>" + NORMAL )
 		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " >>> " + commantaire + " (" + nom + ")"+ "\n")
 	fdebug("Enregistrement dans le fichier")
 	pasdefichier.close() # Je ferme la porte derriere mon fichier
@@ -75,16 +75,16 @@ if "l" in debug :
 	fdebug("Lecture du fichier")
 	quitter = "c"
 	while quitter is not "q" :
-		cible = raw_input(VERT + "De qui veut tu lire les remarques ? >>>" + NORMAL)
+		cible = raw_input(VERT + "De qui veux-tu lire les remarques ? >>>" + NORMAL)
 		try :
 			fichier = open( cible + ".txt", "r" )
 		except IOError:
 			ferror("fichier introuvable")
-			continuer = raw_input (VERT + "Veut tu generer le fichier ? (o/n)" + NORMAL)
+			continuer = raw_input (VERT + "Veux-tu generer le fichier ? (o/n) >>>" + NORMAL)
 			fdebug("Reponse enregistrée")
 			if "o" in continuer :
 				fdebug ("Oui !")
-				type = raw_input(VERT + "Veut tu faire une a(ction) ou un c(ommentaire) ? >>>" + NORMAL)
+				type = raw_input(VERT + "Veux-tu faire une a(ction) ou un c(ommentaire) ? >>>" + NORMAL)
 				generateur("w")
 				fdebug("Generation finie")
 				print(VERT + "Remarque ajoutée !" + NORMAL)
