@@ -49,7 +49,7 @@ def lecteur() :
 	print (ROSE + "Impression du casier judiciaire\n\n" + NORMAL)
 	fdebug("Lecture du fichier")
 	for ligne in fichier :
-		print ligne
+		print (ROUGE + ligne + NORMAL)
 		fdebug("Ligne lue")
 	fichier.close()
 #MAIN
