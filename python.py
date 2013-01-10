@@ -73,7 +73,9 @@ if "l" in debug :
 		except IOError:
 			ferror("fichier introuvable")
 			continuer = raw_input (VERT + "Veut tu generer le fichier ? (o/n)" + NORMAL)
+			fdebug("Reponse enregistrée")
 			if "o" in continuer :
+				fdebug ("Oui !")
 				type = raw_input(VERT + "Veut tu faire une a(ction) ou un c(ommentaire) ? >>>" + NORMAL)
 				generateur("w")
 				fdebug("Generation finie")
@@ -83,7 +85,6 @@ if "l" in debug :
 				fdebug ("non")
 				print (ROUGE + "fichier introuvable !" +  NORMAL)
 				quiter = "q"
-				print (VERT + "Au revoir !" + NORMAL)
 		else :
 			lecteur()
 	
