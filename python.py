@@ -63,8 +63,30 @@ nom = raw_input (VERT + "Bonjour ! Entre ton pseudo ! >>>" + NORMAL)
 fdebug("""Enregistrement du pseudo dans la variable "Nom" """)
 print(VERT + "Bonjour " + nom + NORMAL)
 fdebug("Boucle initialisée")
-
-
+if "l" in debug :
+	fdebug("Lecture du fichier")
+	quitter = "c"
+	while quitter is not "q" :
+		cible = raw_input(VERT + "De qui veut tu lire les remarques ? >>>" + NORMAL)
+		try :
+			fichier = open( cible + ".txt", "r" )
+		except IOError:
+			ferror("fichier introuvable")
+			continuer = raw_input (VERT + "Veut tu generer le fichier ? (o/n)" + NORMAL)
+			if "o" in continuer :
+				type = raw_input(VERT + "Veut tu faire une a(ction) ou un c(ommentaire) ? >>>" + NORMAL)
+				generateur("w")
+				fdebug("Generation finie")
+				print(VERT + "Remarque ajoutée !" + NORMAL)
+				print ("\n\n\n")
+			else :
+				fdebug ("non")
+				print (ROUGE + "fichier introuvable !" +  NORMAL)
+				quiter = "q"
+				print (VERT + "Au revoir !" + NORMAL)
+		else :
+			lecteur()
+	
 while "1" == "1" :
 	fdebug("Demande du nom de la personne cible")
 	cible = raw_input ( VERT + "Quel est le nom de la personne cible ? >>>" + NORMAL )
