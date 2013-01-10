@@ -39,6 +39,19 @@ def generateur(presence) : # a si le ficher et present, w sinon
 		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " >>> " + raw_input (VERT + "Entre le commentaire que tu as effectué(e) >>>" + NORMAL) + " (" + nom + ")"+ "\n")
 	fdebug("Enregistrement dans le fichier")
 	pasdefichier.close() # Je ferme la porte derriere mon fichier
+	
+def lecteur() :
+	fdebug("Lecture des questions")
+	global cible
+	fichier = open(cible + ".txt", "r")
+	fdebug ("Ouverture du fichier")
+	print (ROSE + "Cette cible est déja connu des forces de polices ..." + NORMAL)
+	print (ROSE + "Impression du casier judiciaire\n\n" + NORMAL)
+	fdebug("Lecture du fichier")
+	for ligne in fichier :
+		print ligne
+		fdebug("Ligne lue")
+	fichier.close()
 #MAIN
 
 debug = raw_input (VERT + "Tape 0 pour lancer le programme >>>" + NORMAL)
@@ -56,6 +69,15 @@ while "1" == "1" :
 	fdebug("Demande du nom de la personne cible")
 	cible = raw_input ( VERT + "Quel est le nom de la personne cible ? >>>" + NORMAL )
 	fdebug ("""Enregistrement la cible dans la variable "cible". """)
+	
+	fdebug("Test de presence du fichier pour la lecture")
+	try:
+		fichier = open( cible + ".txt", "r") # TEST Ouvre le fichier
+	except IOError:
+		fdebug("fichier introuvable")
+	else :
+		fdebug ("Fichier trouvé")
+		lecteur()
 	
 	fdebug("demande du type d'ajout")
 	type = raw_input(VERT + "Veut tu faire une a(ction) ou un c(ommentaire) ? >>>" + NORMAL)
