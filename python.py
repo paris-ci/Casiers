@@ -34,9 +34,17 @@ def generateur(presence) : # a si le ficher et present, w sinon
 	pasdefichier = open(cible + ".txt", presence) # Ouvre le fichier
 	fdebug("Ouvert / cree le fichier")
 	if type is "a" :
-		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " *** " + raw_input (VERT + "Entre l'action que tu as effectué(e) >>>" + NORMAL) + "(" + nom + ")"+ "\n")
+		action = raw_input ( VERT + "Entre l'action a inscrire dans le registre" + NORMAL )
+		while action == "" :
+			print (ROUGE + "Entre quelque chose" + NORMAL )
+			action = raw_input ( VERT + "Entre l'action a inscrire dans le registre" + NORMAL )
+		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " *** " + action + "(" + nom + ")"+ "\n")
 	else : 
-		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " >>> " + raw_input (VERT + "Entre le commentaire que tu as effectué(e) >>>" + NORMAL) + " (" + nom + ")"+ "\n")
+		commantaire = raw_input( VERT + "Entre le commantaire a inscrire dans le casier >>>" + NORMAL )
+		while commantaire == "" :
+			print (ROUGE + "Entre quelque chose" + NORMAL )
+			commantaire = raw_input( VERT + "Entre le commantaire a inscrire dans le casier >>>" + NORMAL )
+		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " >>> " + commantaire + " (" + nom + ")"+ "\n")
 	fdebug("Enregistrement dans le fichier")
 	pasdefichier.close() # Je ferme la porte derriere mon fichier
 	
