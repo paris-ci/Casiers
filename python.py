@@ -46,6 +46,9 @@ def generateur(presence) : # a si le ficher et present, w sinon
 			commantaire = raw_input( VERT + "Entre le commentaire a inscrire dans le casier >>>" + NORMAL )
 		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " >>> " + commantaire + " (" + nom + ")"+ "\n")
 	fdebug("Enregistrement dans le fichier")
+	warn = raw_input(VERT + " Avez vous prevenu " + cible + " pour la faute ? (o/n) " + NORMAL)
+	if "o" in warn :
+		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " *** " + "warn " + "(" + nom + ")"+ "\n")
 	pasdefichier.close() # Je ferme la porte derriere mon fichier
 	
 def lecteur() :
