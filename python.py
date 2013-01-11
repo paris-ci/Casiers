@@ -33,22 +33,25 @@ def generateur(presence) : # a si le ficher et present, w sinon
 	global type
 	pasdefichier = open(cible + ".txt", presence) # Ouvre le fichier
 	fdebug("Ouvert / cree le fichier")
-	if type is "a" :
-		action = raw_input ( VERT + "Entre l'action a inscrire dans le registre >>>" + NORMAL )
-		while action == "" :
-			print (ROUGE + "Entre quelque chose" + NORMAL )
+	continueraecrire = "c"
+	while continueraecrire is not "q" :
+		if type is "a" :
 			action = raw_input ( VERT + "Entre l'action a inscrire dans le registre >>>" + NORMAL )
-		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " *** " + action + "(" + nom + ")"+ "\n")
-	else : 
-		commantaire = raw_input( VERT + "Entre le commentaire a inscrire dans le casier >>>" + NORMAL )
-		while commantaire == "" :
-			print (ROUGE + "Entre quelque chose" + NORMAL )
+			while action == "" :
+				print (ROUGE + "Entre quelque chose" + NORMAL )
+				action = raw_input ( VERT + "Entre l'action a inscrire dans le registre >>>" + NORMAL )
+			pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " *** " + action + "(" + nom + ")"+ "\n")
+		else : 
 			commantaire = raw_input( VERT + "Entre le commentaire a inscrire dans le casier >>>" + NORMAL )
-		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " >>> " + commantaire + " (" + nom + ")"+ "\n")
-	fdebug("Enregistrement dans le fichier")
-	warn = raw_input(VERT + " Avez vous prevenu " + cible + " pour la faute ? (o/n) " + NORMAL)
-	if "o" in warn :
-		pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " *** " + "warn " + "(" + nom + ")"+ "\n")
+			while commantaire == "" :
+				print (ROUGE + "Entre quelque chose" + NORMAL )
+				commantaire = raw_input( VERT + "Entre le commentaire a inscrire dans le casier >>>" + NORMAL )
+			pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " >>> " + commantaire + " (" + nom + ")"+ "\n")
+		fdebug("Enregistrement dans le fichier")
+		warn = raw_input(VERT + "Avez vous prevenu " + cible + " pour la faute ? (o/n) " + NORMAL)
+		if "o" in warn :
+			pasdefichier.write(time.strftime('%d/%m/%y %H:%M',time.localtime()) + " *** " + "warn " + "(" + nom + ")"+ "\n")
+		continueraecrire = raw_input(VERT + "Continuer a écrire sur la meme personne ?(q pour quitter , c pour continuer)" + NORMAL)
 	pasdefichier.close() # Je ferme la porte derriere mon fichier
 	
 def lecteur() :
